@@ -39,12 +39,12 @@ action :install do
   # If it's not installed at all or an upgrade, install it
   if install_version || @current_resource.version == nil
     description = "install package #{@new_resource} #{install_version}"
-    converge_by(description) do
+    #converge_by(description) do
        info_output = "Installing #{@new_resource}"
        info_output << " version #{install_version}" if install_version and !install_version.empty?
        Chef::Log.info(info_output)
        status = install_package(@new_resource.package_name, install_version)
-    end
+    #end
   end
 end
 
@@ -52,20 +52,20 @@ action :upgrade do
   if @current_resource.version != candidate_version
     orig_version = @current_resource.version || "uninstalled"
     description = "upgrade package #{@new_resource} version from #{orig_version} to #{candidate_version}"
-    converge_by(description) do
+    #converge_by(description) do
        Chef::Log.info("Upgrading #{@new_resource} version from #{orig_version} to #{candidate_version}")
        status = upgrade_package(@new_resource.package_name, candidate_version)
-    end
+    #end
   end
 end
 
 action :remove do
   if removing_package?
     description = "remove package #{@new_resource}"
-    converge_by(description) do
+    #converge_by(description) do
        Chef::Log.info("Removing #{@new_resource}")
        remove_package(@current_resource.package_name, @new_resource.version)
-    end
+    #end
   else
   end
 end
@@ -73,10 +73,10 @@ end
 action :purge do
   if removing_package?
     description = "purge package #{@new_resource}"
-    converge_by(description) do
+    #converge_by(description) do
        Chef::Log.info("Purging #{@new_resource}")
        purge_package(@current_resource.package_name, @new_resource.version)
-    end
+    #end
   end
 end
 

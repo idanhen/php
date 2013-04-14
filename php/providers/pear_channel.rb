@@ -58,10 +58,10 @@ action :update do
     end
     if update_needed
       description = "update pear channel #{@new_resource}"
-      converge_by(description) do
+      #converge_by(description) do
          Chef::Log.info("Updating pear channel #{@new_resource}")
          shell_out!("pear channel-update #{@new_resource.channel_name}")
-      end
+      #end
     end
   end
 end
