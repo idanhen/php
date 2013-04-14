@@ -1,3 +1,4 @@
 package "mongo" do
-  action :install
+    version "1.3.7"
+    action :install
 end
