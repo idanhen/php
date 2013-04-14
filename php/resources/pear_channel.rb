@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-default_action :discover
+#default_action :discover
 actions :discover, :add, :update, :remove
 
 attribute :channel_name, :kind_of => String, :name_attribute => true
