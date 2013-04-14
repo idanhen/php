@@ -1,4 +1,3 @@
-package "mongo" do
-    version "1.3.7"
+php_pear "mongo" do
     action :install
 end
