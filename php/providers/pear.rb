@@ -215,16 +215,16 @@ def manage_pecl_ini(name, action, directives, zend_extensions)
     [ (zend ? filepath : rel_file) , zend ]
   }]
 
-  Chef::Log.debug("EXTENSION: #{node['php']['ext_conf_dir']}/#{name}.ini")
-  template "#{node['php']['ext_conf_dir']}/#{name}.ini" do
-    source "extension.ini.erb"
-    cookbook "php"
-    owner "root"
-    group "root"
-    mode "0644"
-    variables(:name => name, :extensions => extensions, :directives => directives)
-    action action
-  end
+  #Chef::Log.debug("EXTENSION: #{node['php']['ext_conf_dir']}/#{name}.ini")
+  #template "#{node['php']['ext_conf_dir']}/#{name}.ini" do
+  #  source "extension.ini.erb"
+  #  cookbook "php"
+  #  owner "root"
+  #  group "root"
+  #  mode "0644"
+  #  variables(:name => name, :extensions => extensions, :directives => directives)
+  #  action action
+  #end
 end
 
 def grep_for_version(stdout, package)
