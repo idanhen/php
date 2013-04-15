@@ -48,12 +48,12 @@ node[:deploy].each do |application, deploy|
   end
 
   # move away default virtual host so that the new app becomes the default virtual host
-  execute 'mv away default virtual host' do
+  execute 'rm away default virtual host' do
     action :run
     command "rm #{node[:apache][:dir]}/sites-enabled/zzz-default"
     notifies :reload, resources(:service => "apache2"), :delayed
     only_if do
-      ::File.exists?("#{node[:apache][:dir]}/sites-enabled/000-default")
+      ::File.exists?("#{node[:apache][:dir]}/sites-enabled/zzz-default")
     end
   end
 end
