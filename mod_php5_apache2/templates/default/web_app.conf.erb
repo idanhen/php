@@ -1,5 +1,6 @@
 <VirtualHost *:80>
   ServerName <%= @params[:server_name] %>
+  ServerAdmin webmaster@zazma.com
   <% if @params[:server_aliases] && !@params[:server_aliases].empty? -%>
   ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   <% end -%>
@@ -42,6 +43,7 @@
 <% if node[:deploy][@application_name][:ssl_support] -%>
 <VirtualHost *:443>
   ServerName <%= @params[:server_name] %>
+  ServerAdmin webmaster@zazma.com
   <% if @params[:server_aliases] && !@params[:server_aliases].empty? -%>
   ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   <% end -%>
