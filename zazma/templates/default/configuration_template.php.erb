@@ -1,0 +1,58 @@
+<?php
+
+$baseConfig = require ("/srv/www/website/current/Beta/Web/protected/config/baseConfiguration.php");
+unset($baseConfig['components']['log']);
+unset($baseConfig['components']['cache']['servers']);
+
+return CMap::mergeArray(
+                $baseConfig,
+                /* Costumization Parameters Section */ array(
+            'name' => 'Zazma',
+            'language' => 'en_US',
+            'params' => array(
+                'adminEmail' => 'webmaster@zazma.com',
+                'API' => array('ADDRESS' => '<%= node[:deploy][:website][:zazma][:backend][:address] %>', 'PORT' => '<%= node[:deploy][:website][:zazma][:backend][:port] %>')
+            ),
+            'components' => array(
+                'db' => array(
+                    'connectionString' => 'mysql:host=zazmadb.cu2ovaqnaz1u.us-east-1.rds.amazonaws.com;port=3306;dbname=zazma_beta',
+                    'username' => 'beta_website',
+                    'password' => '@24DQ9*1i0zv?v$Oe$0U4Y'
+                ),
+                'mongodb' => array(
+                    'class' => 'EMongoDB',
+                    'connectionString' => 'mongodb://website:UVH4okC9xBEYImyvK2hf3ey8Kuv7ozX1@ds055167-a0.mongolab.com:55167,ds055167-spare.mongolab.com:55167/website',
+                    'dbName' => 'website',
+                    'replicaSet' => 'rs-ds055167',
+                    'fsyncFlag' => true,
+                    'safeFlag' => true,
+                    'useCursor' => false
+                ),
+                'utracking' => array(
+                    'class' => 'EMongoDB',
+                    'connectionString' => 'mongodb://website:UVH4okC9xBEYImyvK2hf3ey8Kuv7ozX1@ds055167-a0.mongolab.com:55167,ds055167-spare.mongolab.com:55167/utracking',
+                    'dbName' => 'utracking',
+                    'replicaSet' => 'rs-ds055167',
+                    'fsyncFlag' => true,
+                    'safeFlag' => true,
+                    'useCursor' => false
+                ),
+                'mouseTracking' => array(
+                    'mouseTrackingEnabled' => false,
+                    'postInterval' => 4,
+                ),
+                'log' => array(
+                    'class' => 'CLogRouter',
+                    'routes' => array(
+                        array(
+                            'class' => 'CFileLogRoute',
+                            'levels' => 'info, error',
+                            'enabled' => true,
+                            'categories' => 'system.*, application',
+                        ),
+                    )
+                ),
+                'cache' => array('servers' => array(array('host' => 'memcache', 'port' => 11211, 'weight' => 60)))
+            )
+                )
+);

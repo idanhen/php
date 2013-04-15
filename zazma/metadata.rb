@@ -1,6 +1,6 @@
-maintainer       "Amazon Web Services"
+maintainer       "Zazma.com"
 license          "Apache 2.0"
-description      "Installs/Configures Apache with mod_php5"
+description      "Configures Apache with zazma"
 version          "0.1"
 
 supports "ubuntu"

@@ -1,0 +1,7 @@
+template '/var/website/configuration/#{node[:deploy][:website][:zazma][:configuration]}' do
+  path "/var/website/configuration/#{node[:deploy][:website][:zazma][:configuration]}.php"
+  source 'configuration_template.php'
+  owner 'root'
+  group 'root'
+  mode 0644
+end
