@@ -5,9 +5,9 @@
   ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   <% end -%>
   DocumentRoot <%= @params[:docroot] %>
-  SetEnv APP_PRODUCTION <%= @{node[:configure][:mod_php5_apache2][:zazma][:production]} %>
-  SetEnv APP_PRODUCTION <%= @{node[:configure][:website][:zazma][:production]} %>
-  SetEnv APP_CONFIGURATION <%= @{node[:configure][:mod_php5_apache2][:zazma][:configuration]} %>
+  SetEnv APP_PRODUCTION <%= @{node[:deploy][:mod_php5_apache2][:zazma][:production]} %>
+  SetEnv APP_PRODUCTION <%= @{node[:deploy][:website][:zazma][:production]} %>
+  SetEnv APP_CONFIGURATION <%= @{node[:deploy][:mod_php5_apache2][:zazma][:configuration]} %>
 
   <Directory <%= @params[:docroot] %>>
     Options FollowSymLinks
@@ -49,8 +49,9 @@
   ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   <% end -%>
   DocumentRoot <%= @params[:docroot] %>
-  SetEnv APP_PRODUCTION <%= @#{node[:configure][:mod_php5_apache2][:zazma][:production]} %>
-  SetEnv APP_CONFIGURATION <%= @#{node[:configure][:mod_php5_apache2][:zazma][:configuration]} %>
+  SetEnv APP_PRODUCTION <%= @{node[:deploy][:mod_php5_apache2][:zazma][:production]} %>
+  SetEnv APP_PRODUCTION <%= @{node[:deploy][:website][:zazma][:production]} %>
+  SetEnv APP_CONFIGURATION <%= @{node[:deploy][:mod_php5_apache2][:zazma][:configuration]} %>
 
   SSLEngine on
   SSLProxyEngine on
