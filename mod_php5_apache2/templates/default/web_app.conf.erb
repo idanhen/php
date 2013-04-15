@@ -5,7 +5,8 @@
   ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   <% end -%>
   DocumentRoot <%= @params[:docroot] %>
-  SetEnv APP_PRODUCTION <%= @{node[:deploy][:website][:zazma][production]} %>
+  SetEnv APP_PRODUCTION true
+  SetEnv APP_CONFIGURATION production
 
   <Directory <%= @params[:docroot] %>>
     Options FollowSymLinks
@@ -47,7 +48,8 @@
   ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   <% end -%>
   DocumentRoot <%= @params[:docroot] %>
-  SetEnv APP_PRODUCTION <%= @{node[:deploy][:website][:zazma][production]} %>
+  SetEnv APP_PRODUCTION true
+  SetEnv APP_CONFIGURATION production
 
   SSLEngine on
   SSLProxyEngine on
