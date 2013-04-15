@@ -1,5 +1,6 @@
 # setup Apache virtual host
 Chef::Log.debug("PRINTING NODE: #{node}")
+Chef::Log.debug("PRINTING NODE: #{node.to_yaml}")
 node[:deploy].each do |application, deploy|
   include_recipe 'apache2::service'
 
