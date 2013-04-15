@@ -1,8 +1,11 @@
 # setup Apache virtual host
-Chef::Log.debug("PRINTING NODE: #{node}")
-Chef::Log.debug("PRINTING NODE: #{node.inspect}")
 node[:deploy].each do |application, deploy|
   include_recipe 'apache2::service'
+
+  Chef::Log.debug("PRINTER SECTION")
+  Chef::Log.debug("PRINTING NODE: #{node[:deploy][application]}")
+  Chef::Log.debug("PRINTING NODE: #{node}")
+  Chef::Log.debug("PRINTING NODE: #{node.inspect}")
 
   if deploy[:application_type] != 'php'
     Chef::Log.debug("Skipping mod_php5_apache2::php application #{application} as it is not an PHP app")
