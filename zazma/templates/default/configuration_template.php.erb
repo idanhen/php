@@ -15,31 +15,32 @@ return CMap::mergeArray(
             ),
             'components' => array(
                 'db' => array(
-                    'connectionString' => 'mysql:host=zazmadb.cu2ovaqnaz1u.us-east-1.rds.amazonaws.com;port=3306;dbname=zazma_beta',
-                    'username' => 'beta_website',
-                    'password' => '@24DQ9*1i0zv?v$Oe$0U4Y'
+                    'connectionString' => 'mysql:host=<%= node[:deploy][:website][:zazma][:MySqlDatabase][:address] %>;port=<%= node[:deploy][:website][:zazma][:MySqlDatabase][:port] %>;dbname=<%= node[:deploy][:website][:zazma][:MySqlDatabase][:dbname] %>',
+                    'username' => '<%= node[:deploy][:website][:zazma][:MySqlDatabase][:username] %>',
+                    'password' => '<%= node[:deploy][:website][:zazma][:MySqlDatabase][:password] %>'
                 ),
                 'mongodb' => array(
                     'class' => 'EMongoDB',
-                    'connectionString' => 'mongodb://website:UVH4okC9xBEYImyvK2hf3ey8Kuv7ozX1@ds055167-a0.mongolab.com:55167,ds055167-spare.mongolab.com:55167/website',
-                    'dbName' => 'website',
-                    'replicaSet' => 'rs-ds055167',
+                    'connectionString' => '<%= node[:deploy][:website][:zazma][:mongodb][:connectionString] %>',
+                    'dbName' => '<%= node[:deploy][:website][:zazma][:mongodb][:dbName] %>',
+                    'replicaSet' => '<%= node[:deploy][:website][:zazma][:mongodb][:replicaSet] %>',
                     'fsyncFlag' => true,
                     'safeFlag' => true,
                     'useCursor' => false
                 ),
                 'utracking' => array(
                     'class' => 'EMongoDB',
-                    'connectionString' => 'mongodb://website:UVH4okC9xBEYImyvK2hf3ey8Kuv7ozX1@ds055167-a0.mongolab.com:55167,ds055167-spare.mongolab.com:55167/utracking',
-                    'dbName' => 'utracking',
-                    'replicaSet' => 'rs-ds055167',
+                    'connectionString' => '<%= node[:deploy][:website][:zazma][:utracking][:connectionString] %>',
+                    'dbName' => '<%= node[:deploy][:website][:zazma][:utracking][:dbName] %>',
+                    'replicaSet' => '<%= node[:deploy][:website][:zazma][:utracking][:replicaSet] %>',
                     'fsyncFlag' => true,
                     'safeFlag' => true,
                     'useCursor' => false
                 ),
                 'mouseTracking' => array(
-                    'mouseTrackingEnabled' => false,
-                    'postInterval' => 4,
+                    'mouseTrackingEnabled' => <%= node[:deploy][:website][:zazma][:mouseTracking][:enable] %>,
+                    'postInterval' => <%= node[:deploy][:website][:zazma][:mouseTracking][:postInterval] %>,
+                    'postURL' => '<%= node[:deploy][:website][:zazma][:mouseTracking][:postURL] %>'
                 ),
                 'log' => array(
                     'class' => 'CLogRouter',
