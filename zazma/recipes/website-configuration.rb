@@ -1,3 +1,10 @@
+directory "/var/website/" do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
+end
+
 directory "/var/website/configuration/" do
   owner "root"
   group "root"
