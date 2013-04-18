@@ -42,6 +42,9 @@ return CMap::mergeArray(
                     'postInterval' => <%= node[:deploy][:website][:zazma][:mouseTracking][:postInterval] %>,
                     'postURL' => '<%= node[:deploy][:website][:zazma][:mouseTracking][:postURL] %>'
                 ),
+		'keyboardTracking' => array(
+                    'KeyboardTrackingEnabled' => <%= node[:deploy][:website][:zazma][:keyboardTracking][:enable] %>
+                ),
                 'log' => array(
                     'class' => 'CLogRouter',
                     'routes' => array(
