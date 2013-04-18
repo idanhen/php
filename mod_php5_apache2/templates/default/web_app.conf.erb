@@ -45,7 +45,7 @@
   ServerName <%= @params[:server_name] %>
   ServerAdmin webmaster@zazma.com
   <% if @params[:server_aliases] && !@params[:server_aliases].empty? -%>
-  ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
+  ServerAlias www.zazma.com zazma.com local.zazma.com customers.zazma.com suppliers.zazma.com localhost.localdomain <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   <% end -%>
   DocumentRoot <%= @params[:docroot] %>
   SetEnv APP_PRODUCTION <%= node[:deploy][:website][:zazma][:production] %>
