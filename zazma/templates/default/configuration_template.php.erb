@@ -42,16 +42,16 @@ return CMap::mergeArray(
                     'postInterval' => <%= node[:deploy][:website][:zazma][:mouseTracking][:postInterval] %>,
                     'postURL' => '<%= node[:deploy][:website][:zazma][:mouseTracking][:postURL] %>'
                 ),
-		'keyboardTracking' => array(
-                    'KeyboardTrackingEnabled' => <%= node[:deploy][:website][:zazma][:keyboardTracking][:enable] %>
-                ),
+                'keyboardTracking' => array(
+			'KeyboardTrackingEnabled' => <%= node[:deploy][:website][:zazma][:keyboardTracking][:enable] %>
+                                ),
                 'log' => array(
                     'class' => 'CLogRouter',
                     'routes' => array(
                         array(
                             'class' => 'CFileLogRoute',
-                            'levels' => 'info, error',
-                            'enabled' => true,
+                            'levels' => '<%= node[:deploy][:website][:zazma][:log][:levels] %>',
+                            'enabled' => <%= node[:deploy][:website][:zazma][:log][:enable] %>,
                             'categories' => 'system.*, application',
                         ),
                     )
