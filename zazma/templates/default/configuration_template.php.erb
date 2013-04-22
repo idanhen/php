@@ -14,6 +14,11 @@ return CMap::mergeArray(
                 'API' => array('ADDRESS' => '<%= node[:deploy][:website][:zazma][:backend][:address] %>', 'PORT' => '<%= node[:deploy][:website][:zazma][:backend][:port] %>')
             ),
             'components' => array(
+                'clientScript' => array(
+                    'minify' => false,
+                    'concatinate' => false,
+                    'minScriptDebug' => false
+                ),
                 'db' => array(
                     'connectionString' => 'mysql:host=<%= node[:deploy][:website][:zazma][:MySqlDatabase][:address] %>;port=<%= node[:deploy][:website][:zazma][:MySqlDatabase][:port] %>;dbname=<%= node[:deploy][:website][:zazma][:MySqlDatabase][:dbname] %>',
                     'username' => '<%= node[:deploy][:website][:zazma][:MySqlDatabase][:username] %>',
