@@ -3,7 +3,7 @@
 $baseConfig = require ("/srv/www/website/current/Beta/Web/protected/config/baseConfiguration.php");
 unset($baseConfig['components']['log']);
 unset($baseConfig['components']['cache']['servers']);
-unset($baseConfig['components']['clientScript']);
+//unset($baseConfig['components']['clientScript']);
 
 return CMap::mergeArray(
                 $baseConfig,
