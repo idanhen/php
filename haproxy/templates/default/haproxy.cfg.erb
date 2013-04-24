@@ -65,7 +65,7 @@ backend rails_app_servers_ssl
 <% if !node[:haproxy][:php_backends].empty? -%>
 backend php_app_servers
   #appsession PHPSESSID len 64 timeout 3h request-learn prefix
-  cookie SERVERID insert indirect nocache
+  #cookie SERVERID insert indirect nocache
   balance roundrobin
   option redispatch
   option httpclose
@@ -80,7 +80,7 @@ backend php_app_servers
 backend php_app_servers_ssl
   mode tcp
   #appsession PHPSESSID len 64 timeout 3h request-learn prefix
-  cookie SERVERID insert indirect nocache
+  #cookie SERVERID insert indirect nocache
   balance roundrobin
   option redispatch
   option ssl-hello-chk
