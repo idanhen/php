@@ -66,7 +66,7 @@ backend rails_app_servers_ssl
 backend php_app_servers
   #appsession PHPSESSID len 64 timeout 3h request-learn prefix
   #cookie SERVERID insert indirect nocache
-  stick-table type ip size 100k expire 30s
+  #stick-table type ip size 100k expire 30s
   balance source #roundrobin
   option redispatch
   option httpclose
@@ -82,7 +82,7 @@ backend php_app_servers_ssl
   mode tcp
   #appsession PHPSESSID len 64 timeout 3h request-learn prefix
   #cookie SERVERID insert indirect nocache
-  stick-table type ip size 100k expire 30s
+  #stick-table type ip size 100k expire 30s
   balance source #roundrobin
   option redispatch
   option ssl-hello-chk
