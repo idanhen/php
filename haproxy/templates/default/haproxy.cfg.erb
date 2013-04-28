@@ -41,7 +41,7 @@ listen application 0.0.0.0:80
 
 <% if !node[:haproxy][:rails_backends].empty? -%>
 backend rails_app_servers
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option httpclose
   option forwardfor
@@ -54,7 +54,7 @@ backend rails_app_servers
 <% if !node[:haproxy][:rails_backends].empty? -%>
 backend rails_app_servers_ssl
   mode tcp
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option ssl-hello-chk
   <% node[:haproxy][:rails_backends].each do |backend| -%>
@@ -67,7 +67,7 @@ backend php_app_servers
   #appsession PHPSESSID len 64 timeout 3h request-learn prefix
   #cookie SERVERID insert indirect nocache
   stick-table type ip size 100k expire 30s
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option httpclose
   option forwardfor
@@ -83,7 +83,7 @@ backend php_app_servers_ssl
   #appsession PHPSESSID len 64 timeout 3h request-learn prefix
   #cookie SERVERID insert indirect nocache
   stick-table type ip size 100k expire 30s
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option ssl-hello-chk
   <% node[:haproxy][:php_backends].each do |backend| -%>
@@ -93,7 +93,7 @@ backend php_app_servers_ssl
 
 <% if !node[:haproxy][:nodejs_backends].empty? -%>
 backend nodejs_app_servers
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option httpclose
   option forwardfor
@@ -106,7 +106,7 @@ backend nodejs_app_servers
 <% if !node[:haproxy][:nodejs_backends].empty? -%>
 backend nodejs_app_servers_ssl
   mode tcp
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option ssl-hello-chk
   <% node[:haproxy][:nodejs_backends].each do |backend| -%>
@@ -116,7 +116,7 @@ backend nodejs_app_servers_ssl
 
 <% if !node[:haproxy][:static_backends].empty? -%>
 backend static_servers
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option httpclose
   option forwardfor
@@ -129,7 +129,7 @@ backend static_servers
 <% if !node[:haproxy][:static_backends].empty? -%>
 backend static_servers_ssl
   mode tcp
-  balance roundrobin
+  balance source #roundrobin
   option redispatch
   option ssl-hello-chk
   <% node[:haproxy][:static_backends].each do |backend| -%>
